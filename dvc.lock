@@ -32,3 +32,22 @@ stages:
     - path: data/pre-processed/news.csv
       md5: 9dfc238972df68bcb9a08723e86224f4
       size: 30662277
+  train-test-split:
+    cmd: python src/train_test_split_data.py --config=params.yaml
+    deps:
+    - path: data/pre-processed/news.csv
+      md5: 9dfc238972df68bcb9a08723e86224f4
+      size: 30662277
+    - path: src/get_data.py
+      md5: 5f2b20db76cd0f1e21323058e841fab7
+      size: 655
+    - path: src/train_test_split_data.py
+      md5: 7ef7464392e77e96be78b78a1038b435
+      size: 1350
+    outs:
+    - path: data/processed/test_news.csv
+      md5: 2521806c3bef53a379cf69ee70bd2db9
+      size: 6311634
+    - path: data/processed/train_news.csv
+      md5: ab5fbd3a0c16d7286624669d67527bd9
+      size: 24380112

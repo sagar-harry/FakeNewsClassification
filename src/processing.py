@@ -13,7 +13,7 @@ def get_data(config_path):
 def processing(config_path):
     config = read_params(config_path=config_path)
     df = get_data(config_path=config_path)
-
+    
 
 if __name__=="__main__":
     args = argparse.ArgumentParser()
