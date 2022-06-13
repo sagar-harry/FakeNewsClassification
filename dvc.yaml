@@ -7,3 +7,15 @@ stages:
     - data_given/news.csv
     outs:
     -  data/raw/news.csv
+
+  pre-processing:
+    cmd: python src/pre_processing.py --config=params.yaml
+    deps:
+    - src/get_data.py
+    - src/pre_processing.py
+    - data/raw/news.csv
+    outs:
+    - data/pre-processed/news.csv
+
+  # train-test-split:
+  

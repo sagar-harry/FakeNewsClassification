@@ -3,6 +3,7 @@ import os
 
 dirs = ["src", 
         os.path.join("data", "raw"),
+        os.path.join("data", "pre-processed"),
         os.path.join("data", "processed"),
         "notebooks", 
         "saved_models",

@@ -3,3 +3,6 @@ dvc[gdrive]
 sklearn
 pyaml
 pandas
+nltk[corpus]
+nltk
+joblib
