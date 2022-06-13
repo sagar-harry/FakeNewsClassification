@@ -1,0 +1,21 @@
+base:
+  project: FakeNewsClassification
+  target_col: label
+
+data_source:
+  source: data_given/news.csv
+
+load_data:
+  raw_dataset_csv: data/raw/news.csv
+
+split_data:
+  train_path: data/processed/train_news.csv
+  test_path: data/processed/test_news.csv
+  test_size: 0.2
+  random_state: 3
+
+estimators:
+  model-1:
+  model-2:
+
+model-dir: saved_models
