@@ -19,6 +19,11 @@ split_data:
 
 estimators:
   model-1:
-  model-2:
+    params:
+      C: 0.8
 
 model-dir: saved_models
+
+reports:
+  params: report/params.json
+  scores: report/scores.json
