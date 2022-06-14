@@ -1,7 +1,6 @@
 import argparse
 import pandas as pd
 from get_data import read_params
-import argparse
 
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.feature_extraction.text import TfidfTransformer
