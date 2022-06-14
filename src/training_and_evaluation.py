@@ -14,6 +14,7 @@ import json
 import os
 import joblib
 
+
 def get_data(config_path):
     config = read_params(config_path)
     data_path = config["split_data"]["train_path"]
@@ -22,20 +23,22 @@ def get_data(config_path):
     df_test = pd.read_csv(data_path, sep=",", encoding='utf-8')
     return df_train, df_test
 
+
 def eval_metrics(actual, predicted):
     model_accuracy_score = accuracy_score(actual, predicted)
     return model_accuracy_score
+
 
 def model_train(config_path):
     config = read_params(config_path=config_path)
     df_train, df_test = get_data(config_path=config_path)
     C = config["estimators"]["model-1"]["params"]["C"]
     pipe = Pipeline([
-                 ('vect', CountVectorizer()),
-                 ('tfidf', TfidfTransformer()),
-                 ('clf', LinearSVC(C=C))
+        ('vect', CountVectorizer()),
+        ('tfidf', TfidfTransformer()),
+        ('clf', LinearSVC(C=C))
     ])
-    pipe.fit(df_train["text"],df_train["label"])
+    pipe.fit(df_train["text"], df_train["label"])
     prediction = pipe.predict(df_test["text"])
     model_accuracy_score = eval_metrics(df_test["label"], prediction)
 
@@ -60,7 +63,8 @@ def model_train(config_path):
     model_path = os.path.join(model_dir, "model-1.joblib")
     joblib.dump(pipe, open(model_path, "wb"))
 
-if __name__=="__main__":
+
+if __name__ == "__main__":
     args = argparse.ArgumentParser()
     args.add_argument("--config", default="params.yaml")
     parsed_args = args.parse_args()

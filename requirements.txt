@@ -10,3 +10,5 @@ argparse
 
 pytest
 tox
+
+flake8
