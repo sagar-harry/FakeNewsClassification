@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Fake news identifier</title>
+{% endblock %}
+
+
+{% block body %}
+<h1 style="text-align: center">Verify the news article here</h1>
+<div class="content">
+    <div class="form">
+        <form action="/" method="POST">
+            <input type="text" name="title" id="title" placeholder="Paste the title of the article here" >
+            <input type="text" name="content" id="content" placeholder="Paste the content of the article here">
+            <br>
+            <button>Verify</button>
+        </form>
+    </div>
+</div>
+
+<div class="container" style="text-align: center">
+    <form action="/index/{{response_}}" method="GET">
+        <h4>Response</h4>
+        <h4>{{response_}}</h4>
+    </form>
+
+</div>
+{% endblock %}

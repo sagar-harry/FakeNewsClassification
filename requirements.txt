@@ -12,3 +12,7 @@ pytest
 tox
 
 flake8
+
+flask
+gunicorn
+heroku
