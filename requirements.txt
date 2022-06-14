@@ -7,4 +7,6 @@ nltk[corpus]
 nltk
 joblib
 argparse
-json
+
+pytest
+tox
