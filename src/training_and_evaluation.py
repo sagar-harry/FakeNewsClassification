@@ -23,8 +23,8 @@ def get_data(config_path):
     return df_train, df_test
 
 def eval_metrics(actual, predicted):
-    accuracy_score = accuracy_score(actual, predicted)
-    return accuracy_score
+    model_accuracy_score = accuracy_score(actual, predicted)
+    return model_accuracy_score
 
 def model_train(config_path):
     config = read_params(config_path=config_path)
@@ -37,7 +37,7 @@ def model_train(config_path):
     ])
     pipe.fit(df_train["text"],df_train["label"])
     prediction = pipe.predict(df_test["text"])
-    accuracy_score = eval_metrics(df_test["label"], prediction)
+    model_accuracy_score = eval_metrics(df_test["label"], prediction)
 
     ##########################################
     scores_file = config["reports"]["scores"]
@@ -45,19 +45,19 @@ def model_train(config_path):
 
     with open(scores_file, "w") as f:
         scores = {
-            "accuracy_score": accuracy_score
+            "accuracy_score": model_accuracy_score
         }
         json.dump(scores, f, indent=4)
 
     with open(params_file, "w") as f:
-        params = {
+        params_ = {
             "C": C
         }
-        json.dump(params, params_file, indent=4)
+        json.dump(params_, f, indent=4)
 
     model_dir = config["model-dir"]
-    os.makedirs(model_dir, exists_ok=True)
-    model_path = os.model.join(model_dir, "model-1.joblib")
+    os.makedirs(model_dir, exist_ok=True)
+    model_path = os.path.join(model_dir, "model-1.joblib")
     joblib.dump(pipe, open(model_path, "wb"))
 
 if __name__=="__main__":

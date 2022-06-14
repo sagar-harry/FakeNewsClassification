@@ -51,3 +51,31 @@ stages:
     - path: data/processed/train_news.csv
       md5: ab5fbd3a0c16d7286624669d67527bd9
       size: 24380112
+  model-training:
+    cmd: python src/training_and_evaluation.py --config=params.yaml
+    deps:
+    - path: data/processed/test_news.csv
+      md5: 2521806c3bef53a379cf69ee70bd2db9
+      size: 6311634
+    - path: data/processed/train_news.csv
+      md5: ab5fbd3a0c16d7286624669d67527bd9
+      size: 24380112
+    - path: src/get_data.py
+      md5: 5f2b20db76cd0f1e21323058e841fab7
+      size: 655
+    - path: src/training_and_evaluation.py
+      md5: 7535d23884bdc1220d509e755c23f631
+      size: 2206
+    params:
+      params.yaml:
+        estimators.model-1.params.C: 0.8
+    outs:
+    - path: report/params.json
+      md5: 377d79954614f660e3fad475b2838e50
+      size: 18
+    - path: report/scores.json
+      md5: 4104b65acbfa9a6a52496910dbb20692
+      size: 46
+    - path: saved_models/model-1.joblib
+      md5: 7f3ed2b40acfcc090a0f0b50378da5de
+      size: 2734847
