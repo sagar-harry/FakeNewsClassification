@@ -20,7 +20,8 @@ split_data:
 estimators:
   model-1:
     params:
-      C: 0.8
+      # C: 0.8
+      C: 1
 
 model-dir: saved_models
 

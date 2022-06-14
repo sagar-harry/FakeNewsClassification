@@ -68,14 +68,14 @@ stages:
       size: 2206
     params:
       params.yaml:
-        estimators.model-1.params.C: 0.8
+        estimators.model-1.params.C: 1
     outs:
     - path: report/params.json
-      md5: 377d79954614f660e3fad475b2838e50
-      size: 18
+      md5: ae235d34c80f9de6f9132dcec10bb57a
+      size: 16
     - path: report/scores.json
-      md5: 4104b65acbfa9a6a52496910dbb20692
+      md5: b062672ec43bd1ca628c6a65c69cb988
       size: 46
     - path: saved_models/model-1.joblib
-      md5: 7f3ed2b40acfcc090a0f0b50378da5de
-      size: 2734847
+      md5: 5a742d5f6f3aa04d38786f5b7a91e7e7
+      size: 2734840
