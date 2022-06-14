@@ -38,9 +38,9 @@ stages:
     - estimators.model-1.params.C
     metrics:
     - report/scores.json:
-      cache: false
+        cache: false
     - report/params.json:
-      cache: false
+        cache: false
 
     outs:
     - saved_models/model-1.joblib
