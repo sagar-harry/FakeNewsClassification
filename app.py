@@ -45,13 +45,11 @@ def index():
                 content = request.form["content"]
                 response_ = predict(title, content)
                 news_truth = "REAL NEWS"
-                if response_[0]==0:
+                if response_==0:
                     news_truth="FAKE NEWS"
                 return render_template("index.html", response_=news_truth)
             elif request.json:
                 response_ = api_response(request)
-                print(response_)
-                print(jsonify(response_))
                 return jsonify(response_)
         except:
             print("Error occured")
