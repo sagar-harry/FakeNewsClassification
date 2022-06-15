@@ -18,8 +18,8 @@ def read_params(config_path):
 
 def predict(title, content):
     config = read_params(params_path)
-    model_dir_path = config["model-dir"]
-    model = joblib.load(os.path.join(model_dir_path, "model-1.joblib"))
+    model_dir_path = config["prediction"]["final-model"]
+    model = joblib.load(model_dir_path)
     prediction = model.predict([title+"---"+content])
     return prediction[0]
 
