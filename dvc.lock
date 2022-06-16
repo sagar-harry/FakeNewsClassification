@@ -63,19 +63,16 @@ stages:
     - path: src/get_data.py
       md5: 1ae02966b056efda33039c92baceb6d4
       size: 662
+    - path: src/processing_input.py
+      md5: d5ab9a59d8b042b3cddd823cdf61ebf2
+      size: 1230
     - path: src/training_and_evaluation.py
-      md5: 17528d017e2d5257654579aa944668a2
-      size: 2190
+      md5: a7d1b4b8d331b096015057127ed2a0c0
+      size: 1609
     params:
       params.yaml:
         estimators.model-1.params.C: 1
     outs:
-    - path: report/params.json
-      md5: ae235d34c80f9de6f9132dcec10bb57a
-      size: 16
-    - path: report/scores.json
-      md5: b062672ec43bd1ca628c6a65c69cb988
-      size: 46
     - path: saved_models/model-1.joblib
-      md5: ab69462a5984bd5a6583be24f8911b1f
-      size: 2734840
+      md5: 5b8b0196295ec137f62b2aeed30905e8
+      size: 490255

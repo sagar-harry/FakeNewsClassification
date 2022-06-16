@@ -2,9 +2,7 @@ import argparse
 import pandas as pd
 from get_data import read_params
 
-from sklearn.feature_extraction.text import CountVectorizer
-from sklearn.feature_extraction.text import TfidfTransformer
-from sklearn.pipeline import Pipeline
+from processing_input import processing_input
 
 from sklearn.svm import LinearSVC
 
@@ -32,36 +30,19 @@ def eval_metrics(actual, predicted):
 def model_train(config_path):
     config = read_params(config_path=config_path)
     df_train, df_test = get_data(config_path=config_path)
+    df_train, df_test = processing_input(df_train=df_train, df_test=df_test)
+
     C = config["estimators"]["model-1"]["params"]["C"]
-    pipe = Pipeline([
-        ('vect', CountVectorizer()),
-        ('tfidf', TfidfTransformer()),
-        ('clf', LinearSVC(C=C))
-    ])
-    pipe.fit(df_train["text"], df_train["label"])
-    prediction = pipe.predict(df_test["text"])
+
+    clf = LinearSVC(C=C)
+    clf.fit(df_train.iloc[:, :-1], df_train.iloc[:, -1])
+
+    prediction = clf.predict(df_test.iloc[:, :-1])
     model_accuracy_score = eval_metrics(df_test["label"], prediction)
-
-    ##########################################
-    scores_file = config["reports"]["scores"]
-    params_file = config["reports"]["params"]
-
-    with open(scores_file, "w") as f:
-        scores = {
-            "accuracy_score": model_accuracy_score
-        }
-        json.dump(scores, f, indent=4)
-
-    with open(params_file, "w") as f:
-        params_ = {
-            "C": C
-        }
-        json.dump(params_, f, indent=4)
-
     model_dir = config["model-dir"]
     os.makedirs(model_dir, exist_ok=True)
     model_path = os.path.join(model_dir, "model-1.joblib")
-    joblib.dump(pipe, open(model_path, "wb"))
+    joblib.dump(clf, open(model_path, "wb"))
 
 
 if __name__ == "__main__":

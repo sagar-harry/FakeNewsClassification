@@ -15,14 +15,14 @@ def index():
     if request.method == "POST":
         try:
             if request.form:
-                title = request.form["title"]
-                content = request.form["content"]
-                response_ = prediction.predict(title, content)
-                news_truth = "REAL NEWS"
+                response_ = prediction.form_response(request.form)
+                print("Rahul"*100)
+                print(response_)
+                news_truth = response_
                 if response_==0:
                     news_truth="FAKE NEWS"
-                elif response_==-1:
-                    news_truth="Enter a valid value"
+                elif response_==1:
+                    news_truth = "REAL NEWS"
                 return render_template("index.html", response_=news_truth)
             elif request.json:
                 response_ = prediction.api_response(request.json)

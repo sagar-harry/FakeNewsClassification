@@ -26,21 +26,23 @@ stages:
     outs:
     - data/processed/train_news.csv
     - data/processed/test_news.csv
+
   
   model-training:
     cmd: python src/training_and_evaluation.py --config=params.yaml
     deps:
     - src/get_data.py
     - src/training_and_evaluation.py
+    - src/processing_input.py
     - data/processed/train_news.csv
     - data/processed/test_news.csv
     params:
     - estimators.model-1.params.C
-    metrics:
-    - report/scores.json:
-        cache: false
-    - report/params.json:
-        cache: false
+    # metrics:
+    # - report/scores.json:
+    #     cache: false
+    # - report/params.json:
+    #     cache: false
 
     outs:
     - saved_models/model-1.joblib
