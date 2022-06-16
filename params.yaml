@@ -18,8 +18,8 @@ split_data:
   random_state: 3
 
 processing: 
-  count-vectorizer: prediction_service\processing_transformers\count-vectorizer.joblib
-  tfidf-transformer: prediction_service\processing_transformers\tfidf-transformer.joblib
+  count-vectorizer: prediction_service/processing_transformers/count-vectorizer.joblib
+  tfidf-transformer: prediction_service/processing_transformers/tfidf-transformer.joblib
 
 estimators:
   model-1:
