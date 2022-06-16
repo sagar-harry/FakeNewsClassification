@@ -32,6 +32,8 @@ TARGET_VALUES_INCORRECT_API = {
 
 def test_api_response_correct_input(data=input_data["correct_value"]):
     res = prediction.api_response(data)
+    print("Sagar"*100)
+    print(res)
     assert res["response"] in TARGET_VALUES_API["response"]
 
 def test_form_response_correct_input(data=input_data["correct_value"]):
