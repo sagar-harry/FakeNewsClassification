@@ -56,4 +56,4 @@ def api_response(request):
         response_ = {"response": response}
         return response_
     except Exception as e:
-        return {"error": e}
+        return {"error": str(e)}
