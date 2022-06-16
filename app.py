@@ -16,8 +16,6 @@ def index():
         try:
             if request.form:
                 response_ = prediction.form_response(request.form)
-                print("Rahul"*100)
-                print(response_)
                 news_truth = response_
                 if response_==0:
                     news_truth="FAKE NEWS"

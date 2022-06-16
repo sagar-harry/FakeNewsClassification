@@ -28,15 +28,12 @@ def read_params(config_path):
         config = yaml.safe_load(yaml_file)
     return config
 
-
 def validate_input(title, content):
     if (title.isnumeric() or content.isnumeric()):
         raise NotAString
     elif (len(content) == 0):
         raise NotAValidValue
-    else:
-        return True
-
+    else: return True
 
 def predict(title, content):
     if validate_input(title=title, content=content):
@@ -44,11 +41,9 @@ def predict(title, content):
         model_dir_path = config["prediction"]["final-model"]
         model = joblib.load(model_dir_path)
         input_array = processing.process_input(title, content)
-        prediction = model.predict(input_array)
+        prediction = model.predict(input_array)        
         return prediction[0]
-    else:
-        return -1
-
+    else: return -1
 
 def form_response(request):
     try:
@@ -56,7 +51,6 @@ def form_response(request):
         return predict(title=title, content=content)
     except Exception as e:
         return e
-
 
 def api_response(request):
     try:
