@@ -26,10 +26,8 @@ def processing_input(df_train, df_test):
     df_test_cv = cv1.transform(df_test.text)
     df_test_tfidf = tfidf1.transform(df_test_cv)
 
-    joblib.dump(cv1, os.path.join(
-        config["processing"], "count-vectorizer.pkl"))
-    joblib.dump(tfidf1, os.path.join(
-        config["processing"], "tfidf-vectorizer.pkl"))
+    joblib.dump(cv1, config["processing"]["count-vectorizer"])
+    joblib.dump(tfidf1, config["processing"]["tfidf-transformer"])
 
     df_train_processed = pd.DataFrame(df_train_tfidf.toarray())
     df_test_processed = pd.DataFrame(df_test_tfidf.toarray())

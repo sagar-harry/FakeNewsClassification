@@ -17,7 +17,9 @@ split_data:
   test_size: 0.2
   random_state: 3
 
-processing: prediction_service\processing_transformers
+processing: 
+  count-vectorizer: prediction_service\processing_transformers\count-vectorizer.joblib
+  tfidf-transformer: prediction_service\processing_transformers\tfidf-transformer.joblib
 
 estimators:
   model-1:

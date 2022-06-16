@@ -18,10 +18,8 @@ def read_params(config_path):
 
 def process_input(title, content):
     config = read_params("params.yaml")
-    cv1 = joblib.load(os.path.join(
-        config["processing"], "count-vectorizer.pkl"))
-    tfidf1 = joblib.load(os.path.join(
-        config["processing"], "tfidf-vectorizer.pkl"))
+    cv1 = joblib.load(config["processing"]["count-vectorizer"])
+    tfidf1 = joblib.load(config["processing"]["tfidf-transformer"])
     text_data = title + "---" + content
     cv_output = cv1.transform([text_data])
     tfidf_output = tfidf1.transform(cv_output)
