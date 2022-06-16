@@ -1,4 +1,3 @@
-from distutils.command.config import config
 from turtle import title
 import yaml
 import joblib

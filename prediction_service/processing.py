@@ -1,6 +1,6 @@
 import os
 import joblib
-from zlib import DEF_BUF_SIZE
+
 import numpy as np
 import yaml
 import pandas as pd
