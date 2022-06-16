@@ -25,7 +25,7 @@ def index():
                     news_truth="Enter a valid value"
                 return render_template("index.html", response_=news_truth)
             elif request.json:
-                response_ = prediction.api_response(request)
+                response_ = prediction.api_response(request.json)
                 return jsonify(response_)
         except Exception as e:
             return render_template("404.html", error=e)

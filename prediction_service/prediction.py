@@ -25,6 +25,12 @@ def read_params(config_path):
         config = yaml.safe_load(yaml_file)
     return config
 
+def validate_input(title, content):
+    if (title.isnumeric() or content.isnumeric()):
+        raise NotAString
+    elif (len(content) == 0):
+        raise NotAValidValue
+    else: return True
 
 def predict(title, content):
     if validate_input(title=title, content=content):
@@ -36,17 +42,9 @@ def predict(title, content):
     else: return -1
 
 
-def validate_input(title, content):
-    if (title.isnumeric() or content.isnumeric()):
-        raise NotAString
-    elif (len(content) == 0):
-        raise NotAValidValue
-    else: return True
-
-
 def api_response(request):
     try:
-        title, content = request.json.values()
+        title, content = request.values()
         response = "FAKE NEWS"
         model_output = predict(title, content)
         if model_output == 1:
