@@ -67,12 +67,8 @@ stages:
       md5: 750126e1192d302e4c9de54425dc9184
       size: 1175
     - path: src/training_and_evaluation.py
-      md5: a7d1b4b8d331b096015057127ed2a0c0
-      size: 1609
+      md5: f8f1d6903720d6bfce45eb89d0a9122d
+      size: 2420
     params:
       params.yaml:
-        estimators.model-1.params.C: 1
-    outs:
-    - path: saved_models/model-1.joblib
-      md5: 605bb34cb0f6fe33a8c751811a380909
-      size: 490255
+        estimators.model-1.params.C: 0.2

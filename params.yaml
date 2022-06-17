@@ -24,8 +24,11 @@ processing:
 estimators:
   model-1:
     params:
-      # C: 0.8
+      # C: 0.2
+      # C: 0.4
       # C: 0.6
+      # C: 0.8
+      # C: 0.9
       C: 1
 
 model-dir: saved_models
@@ -36,3 +39,10 @@ reports:
 
 prediction:
   final-model: prediction_service/model/model-1.joblib
+
+mlflow_config:
+  artifacts_dir: artifacts
+  experiment_name: LinearSVC Classification
+  run_name: mlops
+  registered_model_name: LinearSvcFakeNewsClassificationModel
+  remote_server_uri: http://127.0.0.1:5000
