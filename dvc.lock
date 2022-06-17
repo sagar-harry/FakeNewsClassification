@@ -71,4 +71,10 @@ stages:
       size: 2420
     params:
       params.yaml:
-        estimators.model-1.params.C: 0.2
+        estimators.model-1.params.C: 1
+  log_production_model:
+    cmd: python src/log_production_model.py --config=params.yaml
+    deps:
+    - path: src/log_production_model.py
+      md5: c8b49dce90b4e1803ac10469a0a32f19
+      size: 1874
