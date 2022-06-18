@@ -65,7 +65,7 @@ def model_train(config_path):
             mlflow.sklearn.log_model(clf, "model", registered_model_name=mlflow_config["registered_model_name"])
         
         else:
-            mlflow.sklearn.load_model(clf, "model")
+            mlflow.sklearn.log_model(clf, "model")
 
 
 if __name__ == "__main__":
